@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main() {
+  pid_t pid;
+
+  // Create a child process.
+  pid = fork();
+
+  // Check if we are in the child process.
+  if (pid == 0) {
+    // We are in the child process.
+    printf("I am the child (%d)\n", (int)getpid());
+
+    // Create a grandchild process.
+    pid = fork();
+
+    // Check if we are in the grandchild process.
+    if (pid == 0) {
+      // We are in the grandchild process.
+      printf("I am the grandchild (%d)\n", (int)getpid());
+    }
+  } else {
+    // We are in the parent process.
+    printf("I am the parent (%d)\n", (int)getpid());
+  }
+
+  return 0;
+}
