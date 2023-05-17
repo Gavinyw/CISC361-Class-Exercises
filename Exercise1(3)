@@ -4,8 +4,6 @@
 
 int main() {
   pid_t pid;
-
-  // Create a child process.
   pid = fork();
 
   // Check if we are in the child process.
